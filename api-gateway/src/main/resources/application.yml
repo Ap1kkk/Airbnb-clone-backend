@@ -23,8 +23,9 @@ spring:
   application:
     name: API-GATEWAY
 
+eureka-hostname: localhost
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${eureka-hostname}:8761/eureka/

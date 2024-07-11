@@ -1,6 +1,48 @@
 version: "3.8"
 
 services:
+  api-gateway:
+    build:
+      context: ./api-gateway
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  identity-service:
+    build:
+      context: ./identity-service
+      dockerfile: Dockerfile
+    ports:
+      - "9898:9898"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_DATASOURCE_DATABASE_HOST=postgres-auth-service
+      - SPRING_DATASOURCE_DATABASE_PORT=5432
+      - SPRING_DATASOURCE_DATABASE_NAME=auth_service
+
+  housing-category-service:
+    build:
+      context: ./housing-category-service
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
+  eureka-server:
+    build:
+      context: ./eureka-server
+      dockerfile: Dockerfile
+    ports:
+      - "8761:8761"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+
   postgres-auth-service:
     restart: always
     image: postgres:14.8-alpine3.18
