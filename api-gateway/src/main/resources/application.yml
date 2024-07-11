@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: housing-category-service
+          uri: lb://HOUSING-CATEGORY-SERVICE
+          predicates:
+            - Path=/category/**
+          filters:
+            - RewritePath=/category(?<segment>/?.*), $\{segment}
+            - AuthenticationFilter
+
+        - id: identity-service
+          uri: lb://IDENTITY-SERVICE
+          predicates:
+            - Path=/auth/**
+      discovery:
+        locator:
+          enabled: true
+  application:
+    name: API-GATEWAY
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
