@@ -63,4 +63,4 @@ services:
       - "5000:5000"
     command: -p 5000
     volumes:
-      - ./postgres-data-identity-service:/var/lib/postgresql/data
+      - ./postgres-data/identity-service:/var/lib/postgresql/data
