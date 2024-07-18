@@ -11,10 +11,11 @@ bootJar {
 }
 
 ext {
-    artifactId = 'common'
-    version = "0.0.1-SNAPSHOT"
     springCloudVersion = '2023.0.2'
 }
+
+group = 'ru.ap1kkk'
+version = "0.0.0-SNAPSHOT"
 
 repositories {
     mavenCentral()
