@@ -1,8 +1,13 @@
 FROM gradle:jdk21-alpine AS builder
 
 WORKDIR /app
-COPY . .
-RUN gradle build --no-daemon -x test
+COPY ../settings.gradle settings.gradle
+COPY ../common ./common
+COPY ../housing-category-service ./housing-category-service
+
+RUN ls -1 /app/housing-category-service
+
+RUN gradle build -x test
 
 FROM openjdk:21-slim-buster
 

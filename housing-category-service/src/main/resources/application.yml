@@ -7,7 +7,28 @@ spring:
 
 eureka-hostname: localhost
 
+
 eureka:
   client:
     service-url:
       defaultZone: http://${eureka-hostname}:8761/eureka/
+
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus,info,metric
+  metrics:
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
+
+  prometheus:
+    metrics:
+      export:
+        enabled: true
+

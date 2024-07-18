@@ -2,3 +2,4 @@
 include 'housing-category-service'
 include 'eureka-server'
 include 'api-gateway'
+include 'common'
