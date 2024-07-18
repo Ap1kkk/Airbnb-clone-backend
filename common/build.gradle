@@ -14,7 +14,7 @@ ext {
     springCloudVersion = '2023.0.2'
 }
 
-group = 'ru.ap1kkk'
+group = 'ru.ap1kkk.airbnb.clone'
 version = "0.0.0-SNAPSHOT"
 
 repositories {
