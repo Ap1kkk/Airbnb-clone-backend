@@ -10,8 +10,8 @@ ext {
     artifactId = 'housing-category-service'
     springCloudVersion = '2023.0.2'
 
-    repos_username = System.getenv("REPO_USERNAME")
-    repos_username = System.getenv("REPO_PASSWORD")
+    repo_username = System.getenv("REPO_USERNAME") ?: REPO_USERNAME
+    repo_token = System.getenv("REPO_PASSWORD") ?: REPO_PASSWORD
 }
 
 repositories {
