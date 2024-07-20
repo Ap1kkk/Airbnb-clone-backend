@@ -20,6 +20,7 @@ public class DemoService {
     @SneakyThrows
     public String demo(boolean flag) {
         log.info("Getting category demo");
+
         if (flag)
             throw new Exception("some_message");
         Thread.sleep(new Random().nextLong(200L));

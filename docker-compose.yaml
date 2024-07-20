@@ -37,7 +37,8 @@ services:
     depends_on:
     - eureka-server
     build:
-      dockerfile: ./housing-category-service/Dockerfile
+      context: ./housing-category-service
+      dockerfile: Dockerfile
     extra_hosts: [ 'host.docker.internal:host-gateway' ]
     ports:
       - "9002:9002"

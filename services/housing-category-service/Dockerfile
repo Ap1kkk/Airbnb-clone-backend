@@ -1,11 +1,7 @@
 FROM gradle:jdk21-alpine AS builder
 
 WORKDIR /app
-COPY ../settings.gradle settings.gradle
-COPY ../common ./common
-COPY ../housing-category-service ./housing-category-service
-
-RUN ls -1 /app/housing-category-service
+COPY . .
 
 RUN gradle build -x test
 

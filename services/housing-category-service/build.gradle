@@ -9,15 +9,28 @@ plugins {
 ext {
     artifactId = 'housing-category-service'
     springCloudVersion = '2023.0.2'
+
+    repo_username = "Ap1kkk"
+    repo_token = "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"
 }
 
 repositories {
+    repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/Ap1kkk/Airbnb-clone-backend")
+            credentials {
+                username = repo_username
+                password = repo_token
+            }
+        }
+    }
     mavenCentral()
     mavenLocal()
 }
 
 dependencies {
-    implementation project(':common')
+//    implementation project(':common')
+    implementation 'ru.ap1kkk.airbnb.clone:common:0.0.0-SNAPSHOT'
 
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'

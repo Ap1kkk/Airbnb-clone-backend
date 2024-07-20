@@ -1,5 +1,6 @@
-//rootProject.name = 'airbnb'
+rootProject.name = 'airbnb'
 include 'housing-category-service'
 include 'eureka-server'
 include 'api-gateway'
 include 'common'
+include 'identity-service'
