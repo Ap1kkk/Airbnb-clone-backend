@@ -8,7 +8,7 @@ WORKDIR $APP_DIR
 COPY . .
 
 RUN --mount=type=cache,target=/root/.gradle \
-    ./gradlew build -i --no-daemon -x test
+    gradle build -i --no-daemon -x test
 
 FROM openjdk:21-slim-buster
 
