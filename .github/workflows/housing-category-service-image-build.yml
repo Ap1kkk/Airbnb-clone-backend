@@ -1,12 +1,9 @@
 name: Housing category service docker build
 
 on:
-  workflow_call:
-    secrets:
-      REPO_USERNAME:
-        required: true
-      REPO_PASSWORD:
-        required: true
+  push:
+    paths:
+      - "**/services/housing-category-service/**"
 
 jobs:
   docker:
