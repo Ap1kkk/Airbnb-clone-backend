@@ -1,10 +1,7 @@
 FROM gradle:jdk21-alpine AS builder
-#ENV SERVICE_NAME=housing-category-service
 ENV APP_DIR=/app
 WORKDIR $APP_DIR
-#COPY ../gradle.properties $APP_DIR
 
-#COPY ./$SERVICE_NAME $APP_DIR
 COPY . .
 
 RUN --mount=type=cache,target=/root/.gradle \
