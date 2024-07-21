@@ -11,6 +11,10 @@ ext {
     springCloudVersion = '2023.0.2'
 }
 
+bootJar {
+    enabled=false
+}
+
 repositories {
     mavenCentral()
     mavenLocal()

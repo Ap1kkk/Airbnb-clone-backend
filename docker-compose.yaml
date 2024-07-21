@@ -1,12 +1,10 @@
-version: "3.8"
-
 services:
   api-gateway:
     container_name: api_gateway
     depends_on:
     - eureka-server
     build:
-      context: ./api-gateway
+      context: ./services/api-gateway
       dockerfile: Dockerfile
     ports:
       - "9000:9000"
@@ -19,7 +17,7 @@ services:
     - eureka-server
     - postgres-identity-service
     build:
-      context: ./identity-service
+      context: ./services/identity-service
       dockerfile: Dockerfile
     ports:
       - "9999:9999"
@@ -34,10 +32,8 @@ services:
 
   housing-category-service:
     container_name: housing_category_service
-    depends_on:
-    - eureka-server
     build:
-      context: ./housing-category-service
+      context: ./services/housing-category-service
       dockerfile: Dockerfile
     extra_hosts: [ 'host.docker.internal:host-gateway' ]
     ports:
@@ -48,7 +44,7 @@ services:
   eureka-server:
     container_name: eureka-server
     build:
-      context: ./eureka-server
+      context: ./services/eureka-server
       dockerfile: Dockerfile
     extra_hosts: [ 'host.docker.internal:host-gateway' ]
     ports:
