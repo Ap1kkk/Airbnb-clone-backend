@@ -1,0 +1,6 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  call-workflow:
+    uses: Ap1kkk/Airbnb-clone-backend/.github/workflows/housing-category-service-image-build.yml@v1
