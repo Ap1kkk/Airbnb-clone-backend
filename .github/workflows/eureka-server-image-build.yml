@@ -28,7 +28,7 @@ jobs:
         with:
           context: ./services/eureka-server
           push: true
-          tags: ghcr.io/Ap1kk/airbnb-eureka-server:latest
+          tags: ghcr.io/ap1kkk/airbnb-eureka-server:latest
         env:
           REPO_USERNAME: ${{ github.actor }}
           REPO_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
