@@ -33,5 +33,5 @@ jobs:
           push: true
           tags: ghcr.io/ap1kkk/airbnb-housing-category-service:latest
         env:
-          REPO_USERNAME: ${{ github.repository_owner }}
+          REPO_USERNAME: "TEST"
           REPO_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
