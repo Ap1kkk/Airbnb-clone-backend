@@ -1,6 +1,12 @@
 name: Housing category service docker build
 
-on: workflow_dispatch
+on:
+  workflow_call:
+    secrets:
+      REPO_USERNAME:
+        required: true
+      REPO_PASSWORD:
+        required: true
 
 jobs:
   docker:
