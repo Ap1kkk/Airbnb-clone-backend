@@ -14,6 +14,7 @@ import java.util.Random;
 @Service
 public class DemoService {
 
+
     @Observed(name = "category.demo",
             contextualName = "getting-category-demo",
             lowCardinalityKeyValues = {"userType", "userType2"})
