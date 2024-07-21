@@ -23,12 +23,10 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
       -
-        name: Change directory to context
-        run: "cd services/eureka-server"
-      -
         name: Build and push
         uses: docker/build-push-action@v6
         with:
+          context: "{{defaultContext}}:services/eureka-server"
           push: true
           tags: ghcr.io/ap1kkk/airbnb-eureka-server:latest
         env:
