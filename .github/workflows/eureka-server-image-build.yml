@@ -26,7 +26,7 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./services/eureka-server
+          context: /services/eureka-server
           push: true
           tags: ghcr.io/ap1kkk/airbnb-eureka-server:latest
         env:
