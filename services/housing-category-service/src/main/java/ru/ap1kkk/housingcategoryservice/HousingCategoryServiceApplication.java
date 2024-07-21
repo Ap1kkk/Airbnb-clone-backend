@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 public class HousingCategoryServiceApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(HousingCategoryServiceApplication.class, args);
     }
 
