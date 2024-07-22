@@ -70,4 +70,4 @@ jobs:
           
           echo "version=$new_version" >> $GITHUB_ENV
         env:
-          GH_TOKEN: ${{ secrets.REPO_PASSWORD }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
