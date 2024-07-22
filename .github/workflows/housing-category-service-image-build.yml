@@ -45,17 +45,17 @@ jobs:
           exit 1
           fi
           
-          echo ${version_parts[0]}
-          echo ${version_parts[1]}
-          echo ${version_parts[2]}
+          major=${version_parts[0]}
+          minor=${version_parts[1]}
+          patch=${version_parts[2]}
       
           # Increment the version
-          ((version_parts[2]++))
+          ((patch++))
           
-          echo ${version_parts[0]}
-          echo ${version_parts[1]}
-          echo ${version_parts[2]}
-          new_version="${version_parts[0]}.${version_parts[1]}.${version_parts[2]}"
+          echo $major
+          echo $minor
+          echo $patch
+          new_version="$major.$minor.$patch"
           echo "New version: $new_version"
 
           # Update the repository variable
