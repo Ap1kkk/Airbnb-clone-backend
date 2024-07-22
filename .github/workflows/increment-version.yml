@@ -10,6 +10,10 @@ on:
         required: false
         type: string
         default: '1.0.0'
+    secrets:
+      GH_TOKEN:
+        description: 'needed for gh CLI'
+        required: true
 
 jobs:
   increment_version:
