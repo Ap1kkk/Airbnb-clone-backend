@@ -29,7 +29,7 @@ jobs:
         run: ls -a
 
       - name: Grant execute permission for gradlew
-        run: chmod +x ./services/gradlew
+        run: chmod +x ./services/housing-category-service/gradlew
 
       - name: Build with Gradle
         run: ./services/housing-category-service/gradlew build --no-daemon
