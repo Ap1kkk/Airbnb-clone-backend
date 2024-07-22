@@ -10,10 +10,7 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: write
-#      actions: write
+    permissions: write-all
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -26,7 +23,29 @@ jobs:
 
       - name: Increment version
         id: increment_version
-        run: gh variable set TEST_VARIABLE --body "123"
+        run: |
+          echo "Fetching current version..."
+          response=$(gh variable get HOUSING_CATEGORY_IMAGE_VERSION)
+          current_version=$(echo "$response" | jq -r '.value')
+
+          if [ "$current_version" == "null" ]; then
+            echo "No current version found, setting initial version to 1.0.0"
+            current_version="1.0.0"
+            gh variable set HOUSING_CATEGORY_IMAGE_VERSION --body "$current_version"
+          fi
+
+          echo "Current version: $current_version"
+          
+          # Increment the version (this assumes semantic versioning)
+          IFS='.' read -r -a version_parts <<< "$current_version"
+          ((version_parts[2]++))
+          new_version="${version_parts[0]}.${version_parts[1]}.${version_parts[2]}"
+          echo "New version: $new_version"
+
+          # Update the repository variable
+          gh variable set HOUSING_CATEGORY_IMAGE_VERSION --body "$new_version"
+          
+          echo "version=$new_version" >> $GITHUB_ENV
         env:
           GH_TOKEN: ${{ secrets.REPO_PASSWORD }}
 
