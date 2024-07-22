@@ -21,6 +21,10 @@ jobs:
           server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
           settings-path: ${{ github.workspace }} # location for the settings.xml file
 
+      - name: Debug
+        working-directory: ./.github/workflows
+        run: ls -a
+
       - name: Increment version
         uses: ./.github/workflows/increment-version.yml
         with:
