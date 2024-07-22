@@ -51,6 +51,10 @@ jobs:
       
           # Increment the version
           ((version_parts[2]++))
+          
+          echo ${version_parts[0]}
+          echo ${version_parts[1]}
+          echo ${version_parts[2]}
           new_version="${version_parts[0]}.${version_parts[1]}.${version_parts[2]}"
           echo "New version: $new_version"
 
