@@ -26,7 +26,7 @@ jobs:
         run: ls -a
 
       - name: Increment version
-        uses: ./.github/workflows/increment-version.yml
+        uses: ${{ github.repository }}/.github/workflows/increment-version.yml@main
         with:
           version_variable: HOUSING_CATEGORY_IMAGE_VERSION
         env:
