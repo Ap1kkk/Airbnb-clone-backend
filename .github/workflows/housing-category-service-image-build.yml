@@ -44,6 +44,10 @@ jobs:
           echo "Error: Version format is invalid. Expected format is X.Y.Z"
           exit 1
           fi
+          
+          echo $version_parts[0]
+          echo $version_parts[1]
+          echo $version_parts[2]
       
           # Increment the version
           ((version_parts[2]++))
