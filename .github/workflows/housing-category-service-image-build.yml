@@ -27,7 +27,7 @@ jobs:
         run: chmod +x ./services/gradlew
 
       - name: Build with Gradle
-        run: ./services/gradlew --no-daemon --build-cache :housing-category-service:build
+        run: ./services/gradlew :housing-category-service:build --no-daemon
         env:
           REPO_USERNAME: ${{ github.actor }}
           REPO_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
