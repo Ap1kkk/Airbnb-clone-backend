@@ -11,7 +11,7 @@ ext {
     springCloudVersion = '2023.0.2'
 
     repo_username = System.getenv("REPO_USERNAME") //?: REPO_USERNAME
-    repo_token = System.getenv("INPUT_REPO_PASSWORD") //?: REPO_PASSWORD
+    repo_token = System.getenv("REPO_PASSWORD") //?: REPO_PASSWORD
 }
 
 repositories {
