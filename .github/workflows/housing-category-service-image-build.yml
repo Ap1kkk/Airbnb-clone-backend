@@ -26,6 +26,7 @@ jobs:
         run: |
           echo "Fetching current version..."
           response=$(gh variable get HOUSING_CATEGORY_IMAGE_VERSION)
+          echo "Response: $response"
           current_version=$(echo "$response" | jq -r '.value')
 
           if [ "$current_version" == "null" ]; then
