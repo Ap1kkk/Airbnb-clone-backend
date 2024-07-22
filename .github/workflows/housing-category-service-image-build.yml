@@ -108,4 +108,4 @@ jobs:
         with:
           context: ./services/housing-category-service
           push: true
-          tags: ghcr.io/ap1kkk/airbnb-housing-category-service::${{ env.version }}
+          tags: ghcr.io/ap1kkk/airbnb-housing-category-service:${{ env.version }}
