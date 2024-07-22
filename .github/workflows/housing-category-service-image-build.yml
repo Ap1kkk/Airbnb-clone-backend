@@ -25,18 +25,19 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
-      - name: Check current dir
-        run: ls -a ./services/housing-category-service
-
       - name: Grant execute permission for gradlew
-        run: chmod +x ./services/housing-category-service/gradlew
+        working-directory: ./services/housing-category-service
+        run: chmod +x ./gradlew
 
       - name: Build with Gradle
         working-directory: ./services/housing-category-service
-        run: ./gradlew build --no-daemon
+        run: ./gradlew build --no-daemon --build-cache -i
         env:
           REPO_USERNAME: ${{ github.actor }}
           REPO_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Check current dir
+        run: ls -a ./services/housing-category-service
 
       -
         name: Set up QEMU
@@ -56,6 +57,6 @@ jobs:
         name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: "{{defaultContext}}:services/housing-category-service"
+          context: ./services/housing-category-service
           push: true
           tags: ghcr.io/ap1kkk/airbnb-housing-category-service:latest
