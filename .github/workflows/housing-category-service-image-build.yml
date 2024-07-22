@@ -10,10 +10,10 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: write
-      actions: write
+#    permissions:
+#      packages: write
+#      contents: write
+#      actions: write
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
@@ -28,7 +28,7 @@ jobs:
         id: increment_version
         run: gh variable set TEST_VARIABLE --body "123"
         env:
-          GH_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
