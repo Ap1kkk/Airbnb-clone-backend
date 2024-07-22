@@ -45,17 +45,27 @@ jobs:
           exit 1
           fi
           
-          major=${version_parts[0]}
-          minor=${version_parts[1]}
-          patch=${version_parts[2]}
-      
-          # Increment the version
-          ((patch++))
+          # Print the version parts for debugging
+          echo "Major version: ${version_parts[0]}"
+          echo "Minor version: ${version_parts[1]}"
+          echo "Patch version: ${version_parts[2]}"
           
-          echo $major
-          echo $minor
-          echo $patch
-          new_version="$major.$minor.$patch"
+          # Assign version parts to variables
+            major=${version_parts[0]}
+            minor=${version_parts[1]}
+            patch=${version_parts[2]}
+          
+          # Print the patch version before incrementing
+          echo "Current patch version: $patch"
+          
+          # Increment the version
+            ((patch++))
+          
+          # Print the patch version after incrementing
+          echo "New patch version: $patch"
+          
+          # Construct the new version string
+            new_version="${major}.${minor}.${patch}"
           echo "New version: $new_version"
 
           # Update the repository variable
