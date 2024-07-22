@@ -26,7 +26,7 @@ jobs:
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
       - name: Check current dir
-        run: ls -a
+        run: ls -a ./services/housing-category-service
 
       - name: Grant execute permission for gradlew
         run: chmod +x ./services/housing-category-service/gradlew
