@@ -37,8 +37,15 @@ jobs:
 
           echo "Current version: $current_version"
           
-          # Increment the version (this assumes semantic versioning)
+          # Ensure version format is valid
           IFS='.' read -r -a version_parts <<< "$current_version"
+          
+          if [ ${#version_parts[@]} -ne 3 ]; then
+          echo "Error: Version format is invalid. Expected format is X.Y.Z"
+          exit 1
+          fi
+      
+          # Increment the version
           ((version_parts[2]++))
           new_version="${version_parts[0]}.${version_parts[1]}.${version_parts[2]}"
           echo "New version: $new_version"
