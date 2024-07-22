@@ -9,7 +9,7 @@ on:
 
 jobs:
   increment_version:
-    uses: ./.github/workflows/increment-version.yml@main
+    uses: ./.github/workflows/increment-version.yml
     with:
       version_variable: HOUSING_CATEGORY_IMAGE_VERSION
     secrets:
