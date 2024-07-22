@@ -10,10 +10,6 @@ on:
 jobs:
   docker:
     runs-on: ubuntu-latest
-    permissions:
-      packages: write
-      contents: write
-      actions: write
     steps:
       - uses: actions/checkout@v4
       - name: Set up JDK 17
