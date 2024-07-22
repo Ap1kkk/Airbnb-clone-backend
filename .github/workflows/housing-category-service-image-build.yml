@@ -8,6 +8,13 @@ on:
 #      - "**/services/housing-category-service/**"
 
 jobs:
+  increment_version:
+    uses: ${{ github.repository }}/.github/workflows/increment-version.yml@main
+    with:
+      version_variable: HOUSING_CATEGORY_IMAGE_VERSION
+    secrets:
+      GH_TOKEN: ${{ secrets.REPO_PASSWORD }}
+
   docker:
     runs-on: ubuntu-latest
     permissions: write-all
@@ -24,13 +31,6 @@ jobs:
       - name: Debug
         working-directory: ./.github/workflows
         run: ls -a
-
-      - name: Increment version
-        uses: ${{ github.repository }}/.github/workflows/increment-version.yml@main
-        with:
-          version_variable: HOUSING_CATEGORY_IMAGE_VERSION
-        env:
-          GH_TOKEN: ${{ secrets.REPO_PASSWORD }}
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
