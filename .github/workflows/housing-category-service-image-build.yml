@@ -59,7 +59,7 @@ jobs:
           echo "Current patch version: $patch"
           
           # Increment the version
-            ((patch++))
+          patch=$((patch+1))
           
           # Print the patch version after incrementing
           echo "New patch version: $patch"
