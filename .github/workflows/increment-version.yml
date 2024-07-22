@@ -1,0 +1,69 @@
+name: Increment Version
+
+on:
+  workflow_call:
+    inputs:
+      version_variable:
+        required: true
+        type: string
+      initial_version:
+        required: false
+        type: string
+        default: '1.0.0'
+
+jobs:
+  increment_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Increment version
+        run: |
+          echo "Fetching current version..."
+          response=$(gh variable get ${{ inputs.version_variable }})
+          echo "Response: $response"
+          current_version="$response"
+
+          if [ "$current_version" == "null" ] || [ -z "$current_version" ]; then
+            echo "No current version found, setting initial version to ${{ inputs.initial_version }}"
+            current_version="${{ inputs.initial_version }}"
+            gh variable set ${{ inputs.version_variable }} --body "$current_version"
+          fi
+
+          echo "Current version: $current_version"
+          
+          # Ensure version format is valid
+          IFS='.' read -r -a version_parts <<< "$current_version"
+          
+          if [ ${#version_parts[@]} -ne 3 ]; then
+            echo "Error: Version format is invalid. Expected format is X.Y.Z"
+            exit 1
+          fi
+          
+          # Print the version parts for debugging
+          echo "Major version: ${version_parts[0]}"
+          echo "Minor version: ${version_parts[1]}"
+          echo "Patch version: ${version_parts[2]}"
+          
+          # Assign version parts to variables
+          major=${version_parts[0]}
+          minor=${version_parts[1]}
+          patch=${version_parts[2]}
+          
+          # Print the patch version before incrementing
+          echo "Current patch version: $patch"
+          
+          # Increment the version
+          patch=$((patch+1))
+          
+          # Print the patch version after incrementing
+          echo "New patch version: $patch"
+          
+          # Construct the new version string
+          new_version="${major}.${minor}.${patch}"
+          echo "New version: $new_version"
+
+          # Update the repository variable
+          gh variable set ${{ inputs.version_variable }} --body "$new_version"
+          
+          echo "version=$new_version" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ secrets.REPO_PASSWORD }}
